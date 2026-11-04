@@ -1,170 +1,182 @@
-/* ========================================
-   FIREBASE AUTH + TODO PROJECT
-   Modern Blue & Purple Gradient UI
-======================================== */
+/* =================================
+   COMPACT AUTH DESIGN
+================================= */
 
-/* 1. RESET & GLOBAL */
-
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-:root {
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --purple: #8b5cf6;
-  --background: #f4f5ff;
-  --text: #1e1b4b;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --white: #ffffff;
-  --shadow: 0 20px 50px rgba(79, 70, 229, 0.13);
-}
-
-body {
+.auth-page {
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at top left, #dbeafe 0, transparent 40%),
-    radial-gradient(circle at bottom right, #ede9fe 0, transparent 40%),
-    var(--background);
+  width: 100%;
+  padding: 12px;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+
+  font-family: Arial, sans-serif;
+  color: #fff;
+
+  background:
+    radial-gradient(ellipse at 0% 0%, #1754e9 0%, transparent 38%),
+    radial-gradient(ellipse at 100% 0%, #7310d8 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, #2724a9 0%, transparent 55%),
+    linear-gradient(135deg, #071b64, #17106b 55%, #35108d);
+
+  overflow-x: hidden;
 }
 
-/* 2. HEADINGS */
-
-h1 {
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 12px;
-  letter-spacing: -1px;
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-}
-
-/* 3. SIGNUP & LOGIN */
-
-#signupForm,
-#loginForm {
+.auth-container {
   width: 100%;
-  max-width: 420px;
-  background: var(--white);
-  padding: 36px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  max-width: 390px;
+  min-width: 0;
+  padding: 20px;
+
+  background: rgba(5, 12, 65, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+}
+
+/* HEADER */
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.auth-header h1 {
+  font-size: 25px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.auth-header p {
+  color: #c6c8e8;
+  font-size: 13px;
+}
+
+/* TABS */
+
+.auth-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 15px;
+
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 11px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #c6c8e8;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-tab.active {
+  color: #fff;
+  background: linear-gradient(135deg, #c044ff, #7535ff);
+}
+
+/* SECTION */
+
+.auth-section h2 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.auth-section > p {
+  text-align: center;
+  color: #c6c8e8;
+  font-size: 13px;
+  margin-bottom: 13px;
+}
+
+/* FORM */
+
+.auth-section form {
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin: 20px auto;
+  gap: 7px;
+
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
 }
 
-/* INPUTS */
+.auth-section label {
+  color: #e8e8ff;
+  font-size: 13px;
+  font-weight: 600;
+}
 
-#signupForm input,
-#loginForm input {
+.auth-section input {
+  display: block;
   width: 100%;
-  padding: 15px 16px;
-  font-size: 1rem;
-  font-family: inherit;
-  color: var(--text);
-  background: #f9faff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  max-width: 100%;
+  min-width: 0;
+  height: 38px;
+
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9px;
   outline: none;
-  transition:
-    border-color 0.25s,
-    box-shadow 0.25s,
-    background 0.25s;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 13px;
 }
 
-#signupForm input::placeholder,
-#loginForm input::placeholder {
-  color: #9ca3af;
+.auth-section input::placeholder {
+  color: #b8b9d8;
 }
 
-#signupForm input:focus,
-#loginForm input:focus {
-  background: var(--white);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+.auth-section input:focus {
+  border-color: #a855f7;
 }
 
-/* 4. BUTTONS */
+/* BUTTON */
 
-#signupForm button,
-#loginForm button {
+.auth-section form button {
   width: 100%;
-  padding: 15px 20px;
+  height: 39px;
+  margin-top: 5px;
+
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: var(--white);
-  font-size: 1rem;
-  font-weight: 700;
+  border-radius: 9px;
+
+  color: #fff;
+  background: linear-gradient(135deg, #c044ff, #7535ff);
+
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.24);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    filter 0.2s;
 }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(99, 102, 241, 0.32);
-  filter: brightness(1.04);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid #a5b4fc;
-  outline-offset: 3px;
-}
-
-/* 5. LINKS & TEXT */
-
-p {
-  color: var(--muted);
-  line-height: 1.6;
+.auth-section form p {
+  font-size: 12px;
   text-align: center;
-  margin: 8px 0;
-}
-
-a {
-  color: var(--primary-dark);
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a:hover {
-  color: var(--purple);
-  text-decoration: underline;
-}
-
-#message {
   overflow-wrap: anywhere;
-  font-size: 0.9rem;
 }
 
 /* ========================================
@@ -862,6 +874,34 @@ a:hover {
   }
 }
 
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 18px 13px;
+  }
+
+  .auth-container {
+    padding: 25px 17px;
+    border-radius: 19px;
+  }
+
+  .auth-header {
+    margin-bottom: 20px;
+  }
+
+  .auth-header h1 {
+    font-size: 1.7rem;
+  }
+
+  #signupForm,
+  #loginForm {
+    padding: 20px 16px;
+  }
+
+  .auth-tabs {
+    margin-bottom: 20px;
+  }
+}
+
 @media (max-width: 360px) {
   .stats-section {
     grid-template-columns: 1fr;
@@ -869,6 +909,14 @@ a:hover {
 
   .hero-content h1 {
     font-size: 1.9rem;
+  }
+  .auth-container {
+    padding: 20px 12px;
+  }
+
+  #signupForm,
+  #loginForm {
+    padding: 17px 12px;
   }
 }
 

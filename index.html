@@ -1,49 +1,96 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Welcome to Firebase Hosting</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/13.1.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/13.1.0/firebase-auth-compat.js"></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-database-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-firestore-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-functions-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-messaging-compat.js"
-    ></script>
-    <script defer src="/__/firebase/13.1.0/firebase-storage-compat.js"></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-analytics-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-remote-config-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/13.1.0/firebase-performance-compat.js"
-    ></script>
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <title>Todo App | Login & Signup</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <p>Redirecting to signup page...</p>
-    <script>
-      window.location.replace("signup.html");
-    </script>
+
+  <body class="auth-page">
+    <main class="auth-container">
+      <!-- AUTH HEADER -->
+      <div class="auth-header">
+        <h1>Welcome to Todo App</h1>
+        <p>Organize your tasks and stay productive.</p>
+      </div>
+
+      <!-- LOGIN / SIGNUP TABS -->
+      <div class="auth-tabs">
+        <button type="button" id="loginTab" class="auth-tab active">
+          Login
+        </button>
+
+        <button type="button" id="signupTab" class="auth-tab">Sign Up</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <section id="loginSection" class="auth-section">
+        <h2>Welcome Back!</h2>
+        <p>Login to access your dashboard.</p>
+
+        <form id="loginForm">
+          <label for="loginEmail">Email Address</label>
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="loginPassword">Password</label>
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+          />
+
+          <button type="submit">Login</button>
+
+          <p id="loginMessage"></p>
+        </form>
+      </section>
+
+      <!-- SIGNUP FORM -->
+      <section id="signupSection" class="auth-section" hidden>
+        <h2>Create Account</h2>
+        <p>Sign up to get started.</p>
+
+        <form id="signupForm">
+          <label for="signupName">Full Name</label>
+          <input
+            type="text"
+            id="signupName"
+            placeholder="Enter your name"
+            required
+          />
+
+          <label for="signupEmail">Email Address</label>
+          <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="signupPassword">Password</label>
+          <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create a password"
+            required
+          />
+
+          <button type="submit">Create Account</button>
+
+          <p id="signupMessage"></p>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

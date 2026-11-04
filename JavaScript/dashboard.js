@@ -1,4 +1,3 @@
-
 import {
   collection,
   addDoc,
@@ -9,7 +8,10 @@ import {
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
 
-import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import {
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 
 import { auth, db } from "./config.js";
 
@@ -50,7 +52,7 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
     try {
       await signOut(auth);
-      window.location.replace("login.html");
+      window.location.replace("index.html");
     } catch (error) {
       console.error("Logout failed:", error.message);
     }
@@ -166,7 +168,6 @@ async function loadTodos(userId) {
 
     completedCount.textContent = completed;
     pendingCount.textContent = querySnapshot.size - completed;
-
   } catch (error) {
     console.log("Error loading todos:", error);
   }

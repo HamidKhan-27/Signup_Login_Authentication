@@ -1,37 +1,16 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
 import {
-  getFirestore,
   doc,
   setDoc,
   getDoc,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
   updateProfile,
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 
-// Firebase Console se apni original configuration paste karo
-const firebaseConfig = {
-  apiKey: "AIzaSyA3WrfqIjaNDfXMn0Sm135D13ZSh2TkZ8M",
-  authDomain: "smit-project-signup-login.firebaseapp.com",
-  projectId: "smit-project-signup-login",
-  storageBucket: "smit-project-signup-login.firebasestorage.app",
-  messagingSenderId: "202127204739",
-  appId: "1:202127204739:web:d73e4720ab36b8c74616b6",
-};
-
-// Firebase initialization
-const app = initializeApp(firebaseConfig);
-
-// Authentication service
-const auth = getAuth(app);
-
-const db = getFirestore(app);
+import { auth, db } from "./JavaScript/config.js";
 
 // Sign-up functionality
 const signupForm = document.getElementById("signupForm");
@@ -74,39 +53,6 @@ if (signupForm)
       message.textContent = `${error.code}: ${error.message}`;
     }
   });
-
-// dashboard functionality
-const userName = document.getElementById("userName");
-const userEmail = document.getElementById("userEmail");
-const logoutBtn = document.getElementById("logoutBtn");
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    if (userName) {
-      userName.textContent = `Hello, ${user.displayName || "User"}!`;
-    }
-
-    if (userEmail) {
-      userEmail.textContent = user.email;
-    }
-  } else {
-    if (userName || userEmail || logoutBtn) {
-      window.location.replace("login.html");
-    }
-  }
-});
-
-// signout functionality
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", async () => {
-    try {
-      await signOut(auth);
-      window.location.replace("login.html");
-    } catch (error) {
-      console.error("Logout failed:", error.message);
-    }
-  });
-}
 
 // login functionality
 const loginForm = document.getElementById("loginForm");

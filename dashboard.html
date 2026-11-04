@@ -3,19 +3,141 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Todo Dashboard</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div class="dashboard">
-      <h1>Welcome to Dashboard!</h1>
 
-      <h2 id="userName">Loading...</h2>
-      <p id="userEmail"></p>
+  <body class="dashboard-page">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <span class="logo-icon">✓</span>
+        <span>Todo<span class="logo-highlight">App</span></span>
+      </a>
 
-      <button id="logoutBtn">Logout</button>
-    </div>
+      <div class="nav-user">
+        <div class="user-avatar">👤</div>
 
-    <script type="module" src="app.js"></script>
+        <div class="user-details">
+          <h3 id="userName">Loading...</h3>
+          <p id="userEmail"></p>
+        </div>
+      </div>
+
+      <button id="logoutBtn" class="logout-btn"><span>↪</span> Logout</button>
+    </nav>
+
+    <!-- MAIN DASHBOARD -->
+    <main class="dashboard-main">
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <span class="welcome-badge"> ✨ Welcome Back! </span>
+
+          <h1>
+            Welcome to Your
+            <span>Todo Dashboard!</span>
+          </h1>
+
+          <p class="hero-description">Stay organized, get more done. 🚀</p>
+
+          <!-- ADD TODO -->
+          <form class="todo-form" id="todoForm">
+            <input
+              type="text"
+              id="todoInput"
+              placeholder="Add a new todo..."
+              autocomplete="off"
+            />
+
+            <button type="submit" id="addTodoBtn"><span>+</span> Add</button>
+          </form>
+        </div>
+
+        <!-- HERO ILLUSTRATION -->
+        <div class="hero-illustration">
+          <div class="illustration-circle"></div>
+
+          <div class="clipboard">
+            <div class="clip-top"></div>
+
+            <div class="clip-task">
+              <span>✓</span>
+              <div></div>
+            </div>
+
+            <div class="clip-task">
+              <span>✓</span>
+              <div></div>
+            </div>
+
+            <div class="clip-task">
+              <span>✓</span>
+              <div></div>
+            </div>
+          </div>
+
+          <div class="clock">
+            <div class="clock-hand"></div>
+            <div class="clock-center"></div>
+          </div>
+
+          <div class="plant">🌿</div>
+        </div>
+      </section>
+
+      <!-- TODO STATISTICS -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-icon total-icon">✓</div>
+          <div>
+            <h2 id="totalCount">0</h2>
+            <p>Total Todos</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon completed-icon">✓</div>
+          <div>
+            <h2 id="completedCount">0</h2>
+            <p>Completed</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon pending-icon">◷</div>
+          <div>
+            <h2 id="pendingCount">0</h2>
+            <p>Pending</p>
+          </div>
+        </div>
+
+        <div class="stat-card productivity-card">
+          <div class="stat-icon star-icon">★</div>
+          <div>
+            <h3>Be Productive!</h3>
+            <p>You've got this!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TODO LIST -->
+      <section class="todo-list-section">
+        <div class="todo-heading">
+          <h2>My Tasks</h2>
+          <span class="task-label">Your Todo List</span>
+        </div>
+
+        <div id="todoList" class="todo-list">
+          <div class="empty-state">
+            <span>📝</span>
+            <h3>No tasks yet!</h3>
+            <p>Add your first todo and start being productive.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./JavaScript/dashboard.js"></script>
   </body>
 </html>

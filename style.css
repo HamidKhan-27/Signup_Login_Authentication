@@ -1,10 +1,9 @@
-
 /* ========================================
-   FIREBASE AUTH PROJECT
+   FIREBASE AUTH + TODO PROJECT
    Modern Blue & Purple Gradient UI
 ======================================== */
 
-/* 1. Reset and Global Styles */
+/* 1. RESET & GLOBAL */
 
 * {
   margin: 0;
@@ -39,7 +38,7 @@ body {
   padding: 24px;
 }
 
-/* 2. Headings */
+/* 2. HEADINGS */
 
 h1 {
   font-size: clamp(1.8rem, 5vw, 2.4rem);
@@ -58,7 +57,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* 3. Signup and Login Forms */
+/* 3. SIGNUP & LOGIN */
 
 #signupForm,
 #loginForm {
@@ -75,9 +74,10 @@ h2 {
   margin: 20px auto;
 }
 
-/* Input Fields */
+/* INPUTS */
 
-input {
+#signupForm input,
+#loginForm input {
   width: 100%;
   padding: 15px 16px;
   font-size: 1rem;
@@ -87,23 +87,28 @@ input {
   border: 1px solid var(--border);
   border-radius: 12px;
   outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s,
-              background 0.25s;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
 }
 
-input::placeholder {
+#signupForm input::placeholder,
+#loginForm input::placeholder {
   color: #9ca3af;
 }
 
-input:focus {
+#signupForm input:focus,
+#loginForm input:focus {
   background: var(--white);
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
 }
 
-/* 4. Buttons */
+/* 4. BUTTONS */
 
-button {
+#signupForm button,
+#loginForm button {
   width: 100%;
   padding: 15px 20px;
   border: none;
@@ -114,8 +119,10 @@ button {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(99, 102, 241, 0.24);
-  transition: transform 0.2s, box-shadow 0.2s,
-              filter 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    filter 0.2s;
 }
 
 button:hover {
@@ -134,7 +141,7 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-/* 5. Links and Supporting Text */
+/* 5. LINKS & TEXT */
 
 p {
   color: var(--muted);
@@ -155,80 +162,717 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Firebase Success/Error Messages */
-
 #message {
   overflow-wrap: anywhere;
   font-size: 0.9rem;
 }
 
-/* 6. Dashboard Card */
+/* ========================================
+   6. COMPACT DASHBOARD DESIGN
+======================================== */
 
-.dashboard {
+.dashboard-page {
+  min-height: 100vh;
+  display: block;
+  padding: 15px 4%;
+  color: white;
+  background:
+    radial-gradient(ellipse at 0% 0%, #1754e9 0%, transparent 38%),
+    radial-gradient(ellipse at 100% 0%, #7310d8 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, #2724a9 0%, transparent 55%),
+    linear-gradient(135deg, #071b64, #17106b 55%, #35108d);
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+
+.navbar {
   width: 100%;
-  max-width: 650px;
-  padding: 48px 36px;
-  border-radius: 28px;
-  background: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
-  text-align: center;
+  min-height: 65px;
+  padding: 9px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(5, 12, 65, 0.55);
+  backdrop-filter: blur(18px);
+  position: sticky;
+  z-index: 1000;
+  top: 8px;
 }
 
-.dashboard h1 {
-  margin-bottom: 24px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 800;
+  white-space: nowrap;
 }
 
-.dashboard h2 {
+.logo:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #c052ff, #633cff);
+  font-size: 1.6rem;
+  color: white;
+}
+
+.logo-highlight {
+  color: #c17bff;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+  margin-left: 25px;
+  padding-left: 25px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(173, 126, 255, 0.6);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-details h3 {
+  color: white;
+  font-size: 0.9rem;
   overflow-wrap: anywhere;
-  color: var(--primary-dark);
+}
+
+.user-details p {
+  color: #c6c8e8;
+  font-size: 0.75rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+  margin: 2px 0 0;
+}
+
+/* LOGOUT */
+
+.dashboard-page .logout-btn {
+  width: auto;
+  min-width: 115px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #bd35f5, #7435ff);
+  box-shadow: 0 7px 20px rgba(165, 53, 255, 0.3);
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn span {
+  font-size: 1.1rem;
+  margin-right: 5px;
+}
+
+/* MAIN */
+
+.dashboard-main {
+  width: 100%;
+  max-width: 1350px;
+  margin: 20px auto 0;
+}
+
+/* HERO SECTION */
+
+.hero-section {
+  min-height: 265px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 25px;
+}
+
+.hero-content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-badge {
+  display: inline-block;
+  padding: 8px 17px;
   margin-bottom: 12px;
+  border: 1px solid rgba(192, 135, 255, 0.5);
+  border-radius: 30px;
+  background: rgba(154, 76, 255, 0.3);
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
 }
 
-.dashboard p {
+.hero-content h1 {
+  max-width: 600px;
+  margin: 0 0 10px;
+  text-align: left;
+  color: white;
+  background: none;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.hero-content h1 span {
+  display: block;
+  background: linear-gradient(90deg, #bd55ff, #6e8bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-description {
+  text-align: left;
+  color: #c7d2fe;
+  font-size: 1rem;
+  margin: 8px 0 18px;
+}
+
+/* TODO INPUT */
+
+.todo-form {
+  width: 100%;
+  max-width: 750px;
+  min-height: 65px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(15px);
+}
+
+.todo-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 17px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.todo-form input::placeholder {
+  color: #d0c9ff;
+}
+
+.todo-form input:focus {
+  background: rgba(255, 255, 255, 0.19);
+  border-color: #a879ff;
+  box-shadow: 0 0 0 3px rgba(164, 103, 255, 0.2);
+}
+
+.dashboard-page .todo-form button {
+  width: auto;
+  min-width: 100px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #c044ff, #7535ff);
+  box-shadow: none;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.todo-form button span {
+  font-size: 1.2rem;
+  margin-right: 4px;
+}
+
+/* HERO ILLUSTRATION */
+
+.hero-illustration {
+  height: 260px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration-circle {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(155, 68, 255, 0.45),
+    transparent 70%
+  );
+}
+
+.clipboard {
+  width: 150px;
+  height: 195px;
+  position: relative;
+  z-index: 1;
+  padding: 52px 18px 15px;
+  border: 7px solid #7a7bff;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #fff, #d9d9ff);
+  transform: rotate(-7deg);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+}
+
+.clip-top {
+  position: absolute;
+  top: -16px;
+  left: 43px;
+  width: 55px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #b69bff, #7164ff);
+  border: 3px solid #a9a2ff;
+}
+
+.clip-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.clip-task span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: #514cff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.clip-task div {
+  width: 55px;
+  height: 7px;
+  border-radius: 10px;
+  background: #9a94f6;
+}
+
+.clock {
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  z-index: 2;
+  bottom: 15px;
+  right: 5px;
+  border: 7px solid #8a83ff;
+  border-radius: 50%;
+  background: #f3f1ff;
+}
+
+.clock-hand {
+  position: absolute;
+  width: 4px;
+  height: 26px;
+  left: 37px;
+  top: 13px;
+  border-radius: 5px;
+  background: #5244c9;
+  transform-origin: bottom;
+}
+
+.clock-center {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 33px;
+  left: 30px;
+  border-radius: 50%;
+  background: #5244c9;
+}
+
+.plant {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  font-size: 3.5rem;
+}
+
+/* STATISTICS */
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 15px 0 20px;
+}
+
+.stat-card {
+  min-height: 80px;
+  padding: 13px 17px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+}
+
+.stat-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.total-icon {
+  background: linear-gradient(135deg, #a34bff, #7338ff);
+}
+
+.completed-icon {
+  background: linear-gradient(135deg, #10d8bb, #08b995);
+}
+
+.pending-icon {
+  background: linear-gradient(135deg, #ffbb36, #f58a10);
+}
+
+.star-icon {
+  background: transparent;
+  color: #a76aff;
+  font-size: 2.4rem;
+}
+
+.stat-card h2 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+
+.stat-card h3 {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.stat-card p {
+  color: #c8c9ee;
+  text-align: left;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.productivity-card {
+  border-color: rgba(155, 104, 255, 0.5);
+}
+
+/* TODO LIST */
+
+.todo-list-section {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+}
+
+.todo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.todo-heading h2 {
+  color: white;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.task-label {
+  color: #d0c5ff;
+  font-size: 0.8rem;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px 15px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+}
+
+.empty-state > span {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 7px;
+}
+
+.empty-state h3 {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.empty-state p {
+  color: #c8c9ee;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* TODO ITEM */
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.1);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.todo-item:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* TODO CHECKBOX */
+
+.todo-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+
+  accent-color: #a76aff;
+  cursor: pointer;
+}
+
+/* TODO TEXT */
+
+.todo-item span {
+  flex: 1;
+  min-width: 0;
+  color: white;
+  font-size: 0.95rem;
   overflow-wrap: anywhere;
-  margin-bottom: 26px;
 }
 
-.dashboard button {
-  max-width: 220px;
-  background: linear-gradient(135deg, #ef4444, #ec4899);
-  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2);
+/* DELETE BUTTON */
+
+.todo-item .delete-btn {
+  width: auto;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-radius: 9px;
+  background: rgba(255, 75, 100, 0.16);
+  border: 1px solid rgba(255, 100, 120, 0.35);
+  color: #ff9baa;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: none;
+  cursor: pointer;
 }
 
-.dashboard button:hover {
-  box-shadow: 0 12px 25px rgba(239, 68, 68, 0.3);
+.todo-item .delete-btn:hover {
+  background: rgba(255, 75, 100, 0.28);
+  border-color: rgba(255, 100, 120, 0.6);
+  box-shadow: none;
+  filter: none;
 }
 
-/* 7. Responsive Design */
+/* ========================================
+   7. RESPONSIVE DESIGN
+======================================== */
 
-@media (max-width: 480px) {
-  body {
-    padding: 16px;
+@media (max-width: 950px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: 15px 10px;
   }
 
-  #signupForm,
-  #loginForm {
-    padding: 25px 20px;
-    border-radius: 20px;
+  .hero-illustration {
+    display: none;
   }
 
-  .dashboard {
-    padding: 32px 20px;
-    border-radius: 22px;
-  }
-
-  h1 {
-    letter-spacing: -0.5px;
-  }
-
-  input,
-  button {
-    padding: 14px;
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* 8. Reduced Motion Accessibility */
+@media (max-width: 600px) {
+  .dashboard-page {
+    padding: 12px;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-user {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0 0;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .user-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .dashboard-page .logout-btn {
+    min-width: auto;
+    padding: 9px 14px;
+    font-size: 0.8rem;
+  }
+
+  .dashboard-main {
+    margin-top: 22px;
+  }
+
+  .hero-section {
+    padding: 10px 0;
+    min-height: auto;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .welcome-badge {
+    font-size: 0.8rem;
+    padding: 7px 13px;
+  }
+
+  .todo-form {
+    flex-direction: column;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .todo-form input,
+  .dashboard-page .todo-form button {
+    width: 100%;
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin: 15px 0;
+  }
+
+  .stat-card {
+    min-height: 72px;
+    padding: 10px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+
+  .stat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .stat-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .stat-card h3 {
+    font-size: 0.75rem;
+  }
+
+  .stat-card p {
+    font-size: 0.7rem;
+  }
+
+  .star-icon {
+    font-size: 1.8rem;
+  }
+
+  .todo-list-section {
+    padding: 16px 12px;
+  }
+  .todo-item {
+    gap: 9px;
+    padding: 11px 10px;
+  }
+
+  .todo-item span {
+    font-size: 0.85rem;
+  }
+
+  .todo-item .delete-btn {
+    padding: 7px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+}
+
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
   *,
